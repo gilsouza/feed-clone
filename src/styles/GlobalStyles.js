@@ -1,21 +1,22 @@
 import { createGlobalStyle } from 'styled-components';
-import reset from 'styled-reset';
 
 export default createGlobalStyle`
-    ${reset}
     * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
         color: var(--white);
     }
     html, body, #root {
         max-height: 100vh;
         max-width: 100vw;
-
         width: 100%;
         height: 100%;
     }
     *, button, input {
+        border: 0;
         background: none;
-        font-family: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, Arial, sans-serif;
     }
     html {
         background: var(--primary);
@@ -25,10 +26,11 @@ export default createGlobalStyle`
         --secondary: #253341;
         --gray: #8899a6;
         --white: #FFF;
+        --outline: #2F3336;
         
-        --blue: #1da1f2;
-        --dark-hover: #1a91da
-        --light-hover: #1da1f2
+        --twitter: #1da1f2;
+        --twitter-dark-hover: #1a91da
+        --twitter-light-hover: #1da1f2
 
         --like:#e0245e;
     }

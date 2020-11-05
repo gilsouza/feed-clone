@@ -1,13 +1,26 @@
 import React from 'react';
-import GlobalStyle from './styles/GlobalStyle';
+import { Provider } from 'react-redux';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-function App() {
+import * as ROUTES from './routers';
+import Home from './pages/Home';
+
+import store from './store';
+
+import GlobalStyles from './styles/GlobalStyles';
+
+const App = () => {
     return (
         <>
-            <h1>Início</h1>
-            <GlobalStyle />
+            <Provider store={store}>
+                <BrowserRouter>
+                    <Route path={ROUTES.HOME} component={Home} />
+                </BrowserRouter>
+
+                <GlobalStyles />
+            </Provider>
         </>
     );
-}
+};
 
 export default App;
