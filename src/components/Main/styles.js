@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-    @media (min-width: 500px) {
-        border-left: 1px solid var(--outline);
-        border-right: 1px solid var(--outline);
-    }
+export const Header = styled.div`
+    padding: 0 15px;
+    height: 54px;
+    top: 0;
+    position: sticky;
+    border-bottom: 1px solid var(--outline);
+    background: var(--primary);
 
     display: flex;
-    flex-direction: column;
-    width: min(600px, 100%);
+    align-items: center;
+    text-align: left;
 `;

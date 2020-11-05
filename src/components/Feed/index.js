@@ -1,9 +1,7 @@
 import React from 'react';
 
-const Feed = (props) => {
-    const { user } = props;
-
-    return <div>user</div>;
+const Feed = () => {
+    return <div>feed</div>;
 };
 
 export default Feed;

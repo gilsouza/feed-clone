@@ -7,14 +7,18 @@ import Home from './pages/Home';
 
 import store from './store';
 
-import GlobalStyles from './styles/GlobalStyles';
+import GlobalStyles, { Container, Wrapper } from './styles/GlobalStyles';
 
 const App = () => {
     return (
         <>
             <Provider store={store}>
                 <BrowserRouter>
-                    <Route path={ROUTES.HOME} component={Home} />
+                    <Container>
+                        <Wrapper>
+                            <Route path={ROUTES.HOME} component={Home} />
+                        </Wrapper>
+                    </Container>
                 </BrowserRouter>
 
                 <GlobalStyles />

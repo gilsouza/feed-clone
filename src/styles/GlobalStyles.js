@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
     * {
@@ -34,4 +34,17 @@ export default createGlobalStyle`
 
         --like:#e0245e;
     }
+`;
+
+export const Container = styled.div`
+    background: var(--primary);
+`;
+
+export const Wrapper = styled.div`
+    height: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: center;
 `;

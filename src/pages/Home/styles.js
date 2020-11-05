@@ -1,16 +1,12 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
-    background: var(--primary);
-`;
-
-const Wrapper = styled.div`
-    height: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
+export const Container = styled.div`
+    @media (min-width: 500px) {
+        border-left: 1px solid var(--outline);
+        border-right: 1px solid var(--outline);
+    }
 
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    width: min(600px, 100%);
 `;
-
-export { Container, Wrapper };

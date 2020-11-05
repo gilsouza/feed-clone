@@ -1,20 +1,16 @@
 import React from 'react';
-
-import Header from './../Header';
 import Feed from './../Feed';
 
-import { Container } from './styles';
+import { Header } from './styles';
 
-const Main = (props) => {
-    const { userInfo } = props;
-
-    console.log(userInfo);
-
+const Main = () => {
     return (
-        <Container>
-            <Header title="Home"></Header>
+        <>
+            <Header>
+                <span>Home</span>
+            </Header>
             <Feed />
-        </Container>
+        </>
     );
 };
 
