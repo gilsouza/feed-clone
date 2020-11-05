@@ -1,13 +1,13 @@
 import React from 'react';
 import Feed from './../Feed';
 
-import { Header, Container } from './styles';
+import { Header, Container, Title } from './styles';
 
 const Main = () => {
     return (
         <Container>
             <Header>
-                <span>Home</span>
+                <Title>Home</Title>
             </Header>
             <Feed />
         </Container>
