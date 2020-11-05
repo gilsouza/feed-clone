@@ -1,16 +1,16 @@
 import React from 'react';
 import Feed from './../Feed';
 
-import { Header } from './styles';
+import { Header, Container } from './styles';
 
 const Main = () => {
     return (
-        <>
+        <Container>
             <Header>
                 <span>Home</span>
             </Header>
             <Feed />
-        </>
+        </Container>
     );
 };
 

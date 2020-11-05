@@ -1,7 +1,13 @@
 import React from 'react';
 
+import { Container } from './styles';
+
 const Feed = () => {
-    return <div>feed</div>;
+    return (
+        <Container>
+            <div>lalala</div>
+        </Container>
+    );
 };
 
 export default Feed;
