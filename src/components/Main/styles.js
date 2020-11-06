@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Header = styled.div`
     padding: 0 15px;
-    height: 53px;
+    min-height: 53px;
     top: 0;
     position: sticky;
     border-bottom: 1px solid var(--outline);
@@ -11,10 +11,11 @@ export const Header = styled.div`
     display: flex;
     align-items: center;
     text-align: left;
+    z-index: 2;
 `;
 
 export const Container = styled.div`
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 `;
