@@ -35,8 +35,8 @@ const Post = ({ post: { post, user, posted_at, likes } }) => {
                 </AvatarColumn>
                 <ContentColumn>
                     <ContentHeader>
-                        <strong>Rocketseat</strong>
-                        <span>@rocketseat</span>
+                        <strong>Gim Souza</strong>
+                        <span>@gimsouza</span>
                         {/* <Dot /> */}
                         <time>27 de jun</time>
                     </ContentHeader>
