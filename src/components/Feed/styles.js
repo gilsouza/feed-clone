@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    padding-left: 15px;
-    padding-right: 15px;
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
 `;
 
-export const Padding = styled.div`
-    height: 10px;
-    background: var(--secondary);
-`;
+// export const AvatarColumn = styled.div`
+//     flex-basis: 49px;
+// `;
+
+// export const Content = styled.div`
+//     flex-basis: 0px;
+//     padding-bottom: 10px;
+// `;
