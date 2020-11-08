@@ -1,6 +1,7 @@
 {
   "short_name": "Feed Clone",
   "name": "Feed Clone",
+  "lang": "pt-BR",
   "icons": [
     {
       "src": "favicon.ico",
