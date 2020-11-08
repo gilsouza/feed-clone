@@ -2,13 +2,14 @@ import styled, { css } from 'styled-components';
 import { Favorite } from '../../styles/Icons';
 
 export const Container = styled.div`
-    align-items: stretch;
     flex-direction: column;
+    height: 100%;
 `;
 
 export const Wrapper = styled.div`
     flex-direction: row;
     display: flex;
+    height: 100%;
 `;
 
 export const AvatarColumn = styled.div`
@@ -25,14 +26,16 @@ export const Content = styled.div`
 `;
 
 export const ContentColumn = styled.div`
-    padding: 10px;
+    padding: 0 10px;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 `;
 
 export const ContentHeader = styled.div`
-    padding: 10px 0;
+    padding-bottom: 10px;
     font-weight: 400;
 
     > * {
@@ -66,7 +69,7 @@ export const StatusBar = styled.div`
     justify-content: flex-start;
 
     margin: 11px auto 0;
-    width: 100%; /* Mobile */
+    width: 100%;
 
     > div {
         cursor: pointer;
@@ -85,13 +88,6 @@ export const Likes = styled.div`
         margin-right: 5px;
     }
 
-    /* &:nth-child(1) {
-        &,
-        > svg path {
-            color: var(--like);
-        }
-    } */
-
     &:nth-child(1) {
         color: var(--gray);
         > svg {
@@ -103,7 +99,6 @@ export const Likes = styled.div`
 const iconCSS = css`
     width: 25px;
     height: 25px;
-    /* fill: #6ee; */
 `;
 
 export const LikeIcon = styled(Favorite)`

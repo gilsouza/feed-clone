@@ -58,7 +58,8 @@ const Feed = ({ match: { path } }) => {
                 style={{
                     width,
                     textDecoration: 'none',
-                    borderBottom: '1px solid gray',
+                    height: '100%',
+                    borderBottom: '1px solid #2F3336',
                 }}
             >
                 <PostCard post={data} />
@@ -80,7 +81,6 @@ const Feed = ({ match: { path } }) => {
                         useWindowScroll={true}
                         onEndReached={getNextPage}
                         renderAheadOffset={250}
-                        canChangeSize={true}
                     />
                 )}
                 {!data.length && renderLoading()}
