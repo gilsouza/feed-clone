@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 import { Favorite } from '../../styles/Icons';
 
-export const Container = styled.article`
+export const Container = styled.section`
     flex-direction: column;
     height: 100%;
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.article`
     flex-direction: row;
     display: flex;
     height: 100%;
@@ -36,7 +36,6 @@ export const ContentHeader = styled.div`
 export const BoxUser = styled.div`
     display: flex;
     flex-direction: column;
-    width: 300px;
     margin-left: 10px;
     justify-content: center;
 

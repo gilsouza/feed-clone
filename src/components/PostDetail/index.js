@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import Dayjs from 'dayjs';
@@ -34,6 +34,11 @@ const PostDetail = (props) => {
     } = props;
     const date = Dayjs(posted_at).format('hh:mm A - MMM D, - YYYY');
     const at = userAt(name);
+
+    useEffect(() => {
+        // fix viewport in android
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <Container>

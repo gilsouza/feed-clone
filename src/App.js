@@ -7,6 +7,7 @@ import locale from 'dayjs/locale/pt-br';
 
 import * as ROUTES from './routers';
 import Home from './pages/Home';
+import NotFound from './pages/NotFound';
 
 import store from './store';
 
@@ -14,7 +15,6 @@ import GlobalStyles, { Container, Wrapper } from './styles/GlobalStyles';
 
 Dayjs.locale(locale);
 
-const NoMatchRoute = () => <div>404 Page</div>;
 const App = () => {
     return (
         <BrowserRouter>
@@ -25,13 +25,12 @@ const App = () => {
                             <Route exact path={ROUTES.ROOT}>
                                 <Redirect to={ROUTES.HOME} />
                             </Route>
-
                             <Route
                                 path={[ROUTES.HOME, ROUTES.POST_DETAIL]}
                                 exact
                                 component={Home}
                             />
-                            <Route component={NoMatchRoute} />
+                            <Route component={NotFound} />
                         </Switch>
                     </Wrapper>
                 </Container>

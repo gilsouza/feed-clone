@@ -22,9 +22,19 @@ const renderPostDetailHeader = (goBack) => {
     );
 };
 
+const renderGenericHeader = (goBack) => {
+    return (
+        <Container>
+            <ArrowLeftIcon onClick={goBack} />
+            <Title>Voltar</Title>
+        </Container>
+    );
+};
+
 const Header = ({ match: { path }, history: { goBack } }) => {
     if (path === ROUTES.POST_DETAIL) return renderPostDetailHeader(goBack);
-    else return renderHomeAvatarHeader();
+    if (path === ROUTES.HOME) return renderHomeAvatarHeader();
+    else return renderGenericHeader(goBack);
 };
 
 export default withRouter(Header);
