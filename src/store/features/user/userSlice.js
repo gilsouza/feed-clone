@@ -6,13 +6,13 @@ export const userSlice = createSlice({
     initialState: {
         userInfo: null,
         isLoading: true,
-        error: null,
+        hasError: null,
     },
     reducers: {
         updateState: (state, action) => {
-            const { error, isLoading, userInfo } = action.payload;
+            const { hasError, isLoading, userInfo } = action.payload;
 
-            if (error !== undefined) state.error = error;
+            if (hasError !== undefined) state.hasError = hasError;
             if (isLoading !== undefined) state.isLoading = isLoading;
             if (userInfo !== undefined) state.userInfo = userInfo;
         },
@@ -23,10 +23,10 @@ const { updateState } = userSlice.actions;
 
 export const fetchUserInfo = () => async (dispatch) => {
     try {
-        dispatch(updateState({ error: null, isLoading: true }));
+        dispatch(updateState({ hasError: null, isLoading: true }));
         const { user } = await getUserInfo();
         dispatch(
-            updateState({ error: null, isLoading: false, userInfo: user })
+            updateState({ hasError: null, isLoading: false, userInfo: user })
         );
     } catch (error) {
         const errorMessage = 'Erro ao obter informação de usuário';
@@ -34,7 +34,7 @@ export const fetchUserInfo = () => async (dispatch) => {
 
         dispatch(
             updateState({
-                error: errorMessage,
+                hasError: errorMessage,
                 isLoading: false,
                 userInfo: null,
             })

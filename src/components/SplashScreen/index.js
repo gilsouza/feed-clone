@@ -7,12 +7,12 @@ import {
     fetchUserInfo,
 } from './../../store/features/user/userSlice';
 
-const SplashScreen = () => {
+const SplashScreen = (textSplash) => {
     return (
         <Container>
             <TwitterIcon />
             <Loading>
-                <span>Carregando dados de usuário</span>
+                <span>{textSplash}</span>
             </Loading>
         </Container>
     );
@@ -27,7 +27,12 @@ const withSplashScreen = (WrappedComponent) => {
             dispatch(fetchUserInfo());
         }, []);
 
-        if (userState.isLoading) return SplashScreen();
+        const textSplash = userState.isLoading
+            ? 'Carregando dados de usuário'
+            : 'Erro ao obter dados de usuário. Tente novamente.';
+
+        if (userState.isLoading || userState.hasError)
+            return SplashScreen(textSplash);
         return <WrappedComponent {...props} />;
     };
 };
