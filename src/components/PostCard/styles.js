@@ -4,6 +4,10 @@ import { Favorite } from '../../styles/Icons';
 export const Container = styled.article`
     flex-direction: column;
     height: 100%;
+
+    &:hover {
+        background-color: var(--secondary);
+    }
 `;
 
 export const Wrapper = styled.div`
@@ -70,13 +74,6 @@ export const StatusBar = styled.div`
 
     margin: 11px auto 0;
     width: 100%;
-
-    > div {
-        cursor: pointer;
-        &:hover {
-            opacity: 0.7;
-        }
-    }
 `;
 
 export const Likes = styled.div`

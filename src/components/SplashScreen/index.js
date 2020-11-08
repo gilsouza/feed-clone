@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Container, TwitterIcon } from './styles.js';
+import { Container, TwitterIcon, Loading } from './styles.js';
 
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -11,6 +11,9 @@ const SplashScreen = () => {
     return (
         <Container>
             <TwitterIcon />
+            <Loading>
+                <span>Carregando dados de usuário</span>
+            </Loading>
         </Container>
     );
 };

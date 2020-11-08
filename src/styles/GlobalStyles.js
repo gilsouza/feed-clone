@@ -27,11 +27,7 @@ export default createGlobalStyle`
         --gray: #8899a6;
         --white: #FFF;
         --outline: #2F3336;
-        
         --twitter: #1da1f2;
-        --twitter-dark-hover: #1a91da;
-        --twitter-light-hover: #1da1f2;
-
         --like:#e0245e;
     }
 `;

@@ -7,7 +7,7 @@ import { selectUser } from './../../store/features/user/userSlice';
 import * as ROUTES from './../../routers';
 
 import { listFriendsPosts } from './../../services/postsService';
-import { hashHelper } from './../../helpers/hash';
+import { hashHelper, normalizeUserName } from '../../helpers';
 
 import PostCard from './../PostCard';
 import ActivityIndicator from './../ActivityIndicator';
@@ -20,14 +20,14 @@ const FIRST_PAGE = 0;
 const Feed = ({ match: { path } }) => {
     const isHome = ROUTES.HOME === path;
 
+    const { userInfo } = useSelector(selectUser);
+
     const parentRef = useRef(null);
-    const layoutProvider = useRef(getLayoutProvider(parentRef.current)).current;
+    const layoutProvider = useRef(getLayoutProvider()).current;
     const [data, setData] = useState([]);
     const [currentPage, setCurrentPage] = useState(FIRST_PAGE);
     const [isLoading, setIsLoading] = useState(true);
     const [dataProvider, setDataProvider] = useState(getDataProvider(data));
-
-    const { userInfo } = useSelector(selectUser);
 
     const getNextPage = async () => {
         try {
@@ -49,13 +49,13 @@ const Feed = ({ match: { path } }) => {
 
     const renderItem = (type, data) => {
         const width = parentRef.current.clientWidth;
-        const user = data.user.name.toLowerCase().replace(' ', '_');
-        const _hash = hashHelper(JSON.stringify(data));
+        const user = normalizeUserName(data.user.name);
+        const hashPost = hashHelper(data);
 
         return (
             <Link
                 to={{
-                    pathname: `/user/${user}/post/${_hash}`,
+                    pathname: `/user/${user}/post/${hashPost}`,
                     state: { post: data },
                 }}
                 style={{

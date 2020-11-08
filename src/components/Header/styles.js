@@ -36,5 +36,6 @@ const iconCSS = css`
 
 export const ArrowLeftIcon = styled(ArrowLeft)`
     ${iconCSS}
-    fill: var(--twitter)
+    fill: var(--twitter);
+    cursor: pointer;
 `;

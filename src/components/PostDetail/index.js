@@ -2,7 +2,6 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import Dayjs from 'dayjs';
-import locale from 'dayjs/locale/pt-br';
 
 import Avatar from './../Avatar';
 
@@ -18,23 +17,24 @@ import {
     StatusBar,
     LikeIcon,
 } from './styles';
+import { userAt } from '../../helpers';
 
-Dayjs.locale(locale);
-
-const PostDetail = ({
-    location: {
-        state: {
-            post: {
-                post,
-                user: { name },
-                posted_at,
-                likes,
+const PostDetail = (props) => {
+    const {
+        location: {
+            state: {
+                post: {
+                    post,
+                    user: { name },
+                    posted_at,
+                    likes,
+                },
             },
         },
-    },
-}) => {
+    } = props;
     const date = Dayjs(posted_at).format('hh:mm A - MMM D, - YYYY');
-    const at = `@${name.toLowerCase().replace(' ', '_')}`;
+    const at = userAt(name);
+
     return (
         <Container>
             <Wrapper>

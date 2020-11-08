@@ -3,17 +3,18 @@ import { LayoutProvider, DataProvider } from 'recyclerlistview/web';
 import { ContextProvider } from 'recyclerlistview';
 
 const getWindowWidth = () => {
+    // To deal with precision issues on android.
     return Math.round(window.innerWidth * 1000) / 1000;
 };
 
-const getLayoutProvider = (parent) => {
+const getLayoutProvider = () => {
     const currentWidth = getWindowWidth();
 
     return new LayoutProvider(
-        () => 'FIX',
+        () => 'FIXED',
         (type, dim) => {
             switch (type) {
-                case 'FIX':
+                case 'FIXED':
                     dim.width = currentWidth;
                     dim.height = 120;
                     break;
@@ -30,28 +31,4 @@ const getDataProvider = (data) =>
         return r1 !== r2;
     }).cloneWithRows(data);
 
-class ContextHelper extends ContextProvider {
-    constructor(uniqueKey) {
-        super();
-        this._contextStore = {};
-        this._uniqueKey = uniqueKey;
-    }
-
-    getUniqueKey() {
-        return this._uniqueKey;
-    }
-
-    save(key, value) {
-        this._contextStore[key] = value;
-    }
-
-    get(key) {
-        return this._contextStore[key];
-    }
-
-    remove(key) {
-        delete this._contextStore[key];
-    }
-}
-
-export { getLayoutProvider, getDataProvider, ContextHelper };
+export { getLayoutProvider, getDataProvider };

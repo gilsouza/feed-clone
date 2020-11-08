@@ -31,3 +31,9 @@ export const Container = styled.div`
     background: var(--primary);
     fill: var(--twitter);
 `;
+
+export const Loading = styled.div`
+    color: var(--white);
+    font-size: 14px;
+    padding-top: 10px;
+`;

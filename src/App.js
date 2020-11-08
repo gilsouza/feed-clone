@@ -2,12 +2,17 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
+import Dayjs from 'dayjs';
+import locale from 'dayjs/locale/pt-br';
+
 import * as ROUTES from './routers';
 import Home from './pages/Home';
 
 import store from './store';
 
 import GlobalStyles, { Container, Wrapper } from './styles/GlobalStyles';
+
+Dayjs.locale(locale);
 
 const NoMatchRoute = () => <div>404 Page</div>;
 const App = () => {

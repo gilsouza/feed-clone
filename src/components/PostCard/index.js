@@ -3,6 +3,7 @@ import Dayjs from 'dayjs';
 import locale from 'dayjs/locale/pt-br';
 
 import Avatar from './../Avatar';
+import { userAt } from '../../helpers';
 
 import {
     Container,
@@ -16,28 +17,19 @@ import {
     LikeIcon,
 } from './styles';
 
-// {
-//     post: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-//     user: {
-//         id: 2,
-//         name: 'User 2',
-//     },
-//     posted_at: '2020-10-01T19:20:55',
-//     likes: 10,
-// }
-
 Dayjs.locale(locale);
 
-const Post = ({
-    post: {
-        post,
-        user: { name },
-        posted_at,
-        likes,
-    },
-}) => {
+const Post = (props) => {
+    const {
+        post: {
+            post,
+            user: { name },
+            posted_at,
+            likes,
+        },
+    } = props;
     const date = Dayjs(posted_at).format('MMM D, YYYY');
-    const at = `@${name.toLowerCase().replace(' ', '_')}`;
+    const at = userAt(name);
     return (
         <Container>
             <Wrapper>
