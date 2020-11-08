@@ -18,6 +18,7 @@ import {
 } from './styles';
 
 Dayjs.locale(locale);
+const DATE_FORMAT = 'MMM D, YYYY';
 
 const Post = (props) => {
     const {
@@ -28,8 +29,9 @@ const Post = (props) => {
             likes,
         },
     } = props;
-    const date = Dayjs(posted_at).format('MMM D, YYYY');
+    const date = Dayjs(posted_at).format(DATE_FORMAT);
     const at = userAt(name);
+
     return (
         <Container>
             <Wrapper>

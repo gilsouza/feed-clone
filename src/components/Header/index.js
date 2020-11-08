@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import * as ROUTES from './../../routers';
 
 import { Container, Avatar, Title, ArrowLeftIcon } from './styles';
@@ -31,10 +31,13 @@ const renderGenericHeader = (goBack) => {
     );
 };
 
-const Header = ({ match: { path }, history: { goBack } }) => {
+const Header = () => {
+    const { path } = useRouteMatch();
+    const { goBack } = useHistory();
+
     if (path === ROUTES.POST_DETAIL) return renderPostDetailHeader(goBack);
     if (path === ROUTES.HOME) return renderHomeAvatarHeader();
     else return renderGenericHeader(goBack);
 };
 
-export default withRouter(Header);
+export default Header;

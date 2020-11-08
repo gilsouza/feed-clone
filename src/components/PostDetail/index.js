@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
+import * as ROUTES from './../../routers';
 
 import Dayjs from 'dayjs';
 
@@ -19,26 +20,33 @@ import {
 } from './styles';
 import { userAt } from '../../helpers';
 
-const PostDetail = (props) => {
-    const {
-        location: {
-            state: {
-                post: {
-                    post,
-                    user: { name },
-                    posted_at,
-                    likes,
-                },
-            },
-        },
-    } = props;
-    const date = Dayjs(posted_at).format('hh:mm A - MMM D, - YYYY');
-    const at = userAt(name);
+const DATE_FORMAT = 'hh:mm A - MMM D, - YYYY';
+
+const PostDetail = () => {
+    const history = useHistory();
+    const { state: statePost } = useLocation();
 
     useEffect(() => {
         // fix viewport in android
         window.scrollTo(0, 0);
     }, []);
+
+    if (!statePost) {
+        history.push(ROUTES.HOME);
+        return null;
+    }
+
+    const {
+        post: {
+            post,
+            user: { name },
+            posted_at,
+            likes,
+        },
+    } = statePost;
+
+    const date = Dayjs(posted_at).format(DATE_FORMAT);
+    const at = userAt(name);
 
     return (
         <Container>
@@ -69,4 +77,4 @@ const PostDetail = (props) => {
     );
 };
 
-export default withRouter(PostDetail);
+export default PostDetail;

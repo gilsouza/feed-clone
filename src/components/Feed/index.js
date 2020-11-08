@@ -1,33 +1,36 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 import { RecyclerListView } from 'recyclerlistview/web';
 import { selectUser } from './../../store/features/user/userSlice';
 
 import * as ROUTES from './../../routers';
 
-import { listFriendsPosts } from './../../services/postsService';
+import { getFriendsPosts } from './../../services/postsService';
 import { hashHelper, normalizeUserName } from '../../helpers';
 
 import PostCard from './../PostCard';
 import ActivityIndicator from './../ActivityIndicator';
 
 import { getLayoutProvider, getDataProvider } from './RecyclerListHelper';
-import { Container } from './styles';
+import { Container, ErrorText } from './styles';
 
 const FIRST_PAGE = 0;
 
-const Feed = ({ match: { path } }) => {
-    const isHome = ROUTES.HOME === path;
-
+const Feed = () => {
+    const { path } = useRouteMatch();
     const { userInfo } = useSelector(selectUser);
 
-    const parentRef = useRef(null);
-    const layoutProvider = useRef(getLayoutProvider()).current;
+    const isHome = ROUTES.HOME === path;
+
     const [data, setData] = useState([]);
     const [currentPage, setCurrentPage] = useState(FIRST_PAGE);
     const [isLoading, setIsLoading] = useState(true);
+    const [isError, setError] = useState(false);
     const [dataProvider, setDataProvider] = useState(getDataProvider(data));
+
+    const parentRef = useRef(null);
+    const layoutProvider = useRef(getLayoutProvider()).current;
 
     const getNextPage = async () => {
         try {
@@ -35,13 +38,14 @@ const Feed = ({ match: { path } }) => {
 
             setIsLoading(true);
             const nextPage = currentPage + 1;
-            const response = await listFriendsPosts(userInfo, nextPage);
+            const response = await getFriendsPosts(userInfo, nextPage);
             const newData = [...data, ...response];
             setCurrentPage(nextPage);
             setData(newData);
         } catch (error) {
-            // FIXME: Tratamento de erro
-            console.error('Erro ');
+            console.error('Erro ao buscar próxima página', error);
+            setIsLoading(false);
+            setError(true);
         } finally {
             setIsLoading(false);
         }
@@ -70,6 +74,13 @@ const Feed = ({ match: { path } }) => {
         );
     };
 
+    const renderError = () => (
+        <ErrorText>
+            <span>Erro ao carregar posts.</span>
+            <span> Tente novamente mais tarde.</span>
+        </ErrorText>
+    );
+
     const renderLoading = () => isLoading && <ActivityIndicator size={20} />;
 
     const renderFeedList = () => {
@@ -94,11 +105,12 @@ const Feed = ({ match: { path } }) => {
     useEffect(() => {
         const firstLoad = async () => {
             try {
-                const response = await listFriendsPosts(userInfo);
+                const response = await getFriendsPosts(userInfo);
                 setData(response);
             } catch (error) {
-                // FIXME: Tratamento de erro
-                console.error('Erro', error);
+                console.error('Erro ao buscar página inicial', error);
+                setIsLoading(false);
+                setError(true);
             } finally {
                 setIsLoading(false);
             }
@@ -110,8 +122,9 @@ const Feed = ({ match: { path } }) => {
         setDataProvider(getDataProvider(data));
     }, [data]);
 
-    if (isHome) return renderFeedList();
+    if (isError) return renderError();
+    else if (isHome) return renderFeedList();
     else return null;
 };
 
-export default withRouter(Feed);
+export default Feed;

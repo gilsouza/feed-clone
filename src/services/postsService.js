@@ -1,3 +1,5 @@
+import { timeoutPromise, DEFAULT_TIMEOUT } from './../helpers';
+
 const POSTS_PATH = process.env.REACT_APP_POSTS_PATH;
 const INITIAL_PAGE = 0;
 const LIMIT = 5;
@@ -6,7 +8,7 @@ const mockFilterUserFriends = (user) => {
     return (unfilteredPosts) =>
         user
             ? unfilteredPosts.filter((item) =>
-                  user?.friends.includes(item?.user?.id)
+                  user.friends.includes(item?.user?.id)
               )
             : unfilteredPosts;
 };
@@ -32,17 +34,13 @@ const mockPaginateResponse = (page, limit) => {
 };
 
 const mockPaginableAPI = (page, limit, user) => {
-    return fetch(POSTS_PATH)
+    return timeoutPromise(DEFAULT_TIMEOUT, fetch(POSTS_PATH))
         .then((data) => data.json())
         .then(mockFilterUserFriends(user))
         .then(mockSortPosts)
         .then(mockPaginateResponse(page, limit));
 };
 
-export const listPosts = (page = INITIAL_PAGE, limit = LIMIT) => {
-    return mockPaginableAPI(page, limit);
-};
-
-export const listFriendsPosts = (user, page = INITIAL_PAGE, limit = LIMIT) => {
+export const getFriendsPosts = (user, page = INITIAL_PAGE, limit = LIMIT) => {
     return mockPaginableAPI(page, limit, user);
 };
