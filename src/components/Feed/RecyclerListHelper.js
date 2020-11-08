@@ -3,24 +3,23 @@ import { LayoutProvider, DataProvider } from 'recyclerlistview/web';
 import { ContextProvider } from 'recyclerlistview';
 
 const getWindowWidth = () => {
-    // To deal with precision issues on android.
-    return Math.round(window.innerWidth * 1000) / 1000 - 15; //Adjustment for margin given to RLV;
+    return Math.round(window.innerWidth * 1000) / 1000;
 };
 
-const getLayoutProvider = () => {
+const getLayoutProvider = (parent) => {
+    const currentWidth = getWindowWidth();
+
     return new LayoutProvider(
-        () => {
-            return 'FIX';
-        },
+        () => 'FIX',
         (type, dim) => {
             switch (type) {
                 case 'FIX':
-                    dim.width = getWindowWidth();
-                    dim.height = 300;
+                    dim.width = currentWidth;
+                    dim.height = 120;
                     break;
                 default:
-                    dim.width = 25;
-                    dim.height = 25;
+                    dim.width = 0;
+                    dim.height = 0;
             }
         }
     );

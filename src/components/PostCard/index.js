@@ -1,4 +1,6 @@
 import React from 'react';
+import Dayjs from 'dayjs';
+import locale from 'dayjs/locale/pt-br';
 
 import Avatar from './../Avatar';
 
@@ -11,6 +13,7 @@ import {
     PostContent,
     Likes,
     StatusBar,
+    LikeIcon,
 } from './styles';
 
 // {
@@ -23,28 +26,37 @@ import {
 //     likes: 10,
 // }
 
-const Post = ({ post: { post, user, posted_at, likes } }) => {
-    const { name } = user;
-    const elapsedTime = '1h';
+Dayjs.locale(locale);
 
+const Post = ({
+    post: {
+        post,
+        user: { name },
+        posted_at,
+        likes,
+    },
+}) => {
+    const date = Dayjs(posted_at).format('MMM D, YYYY');
+    const at = `@${name.toLowerCase().replace(' ', '_')}`;
     return (
         <Container>
             <Wrapper>
                 <AvatarColumn>
-                    <Avatar size={30} />
+                    <Avatar size={40} />
                 </AvatarColumn>
                 <ContentColumn>
                     <ContentHeader>
-                        <strong>Gim Souza</strong>
-                        <span>@gimsouza</span>
+                        <strong>{name}</strong>
+                        <span>{at}</span>
                         {/* <Dot /> */}
-                        <time>27 de jun</time>
+                        <time dateTime={posted_at}>{date}</time>
                     </ContentHeader>
                     <PostContent>
                         <span>{post}</span>
                         <StatusBar>
                             <Likes>
-                                <span>{likes}</span>
+                                <LikeIcon />
+                                {likes}
                             </Likes>
                         </StatusBar>
                     </PostContent>

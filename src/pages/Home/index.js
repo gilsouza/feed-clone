@@ -1,17 +1,23 @@
 import React from 'react';
-// import Menu from './../../components/Menu';
-// import SideBar from './../../components/SideBar';
-import Main from './../../components/Main';
-import { Container } from './styles';
+import { Route } from 'react-router-dom';
+import * as ROUTES from './../../routers';
+
+import Header from './../../components/Header';
+import Feed from './../../components/Feed';
+import PostDetail from './../PostDetail';
+
+import { Container, Body } from './styles';
 
 import withSplashScreen from './../../components/SplashScreen';
 
 const Home = () => {
     return (
         <Container>
-            {/* <Menu/> */}
-            <Main />
-            {/* <SideBar/> */}
+            <Body>
+                <Header />
+                <Feed />
+                <Route path={ROUTES.POST_DETAIL} exact component={PostDetail} />
+            </Body>
         </Container>
     );
 };

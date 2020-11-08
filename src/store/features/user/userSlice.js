@@ -10,7 +10,6 @@ export const userSlice = createSlice({
     },
     reducers: {
         updateState: (state, action) => {
-            console.log('payload', action.payload);
             const { error, isLoading, userInfo } = action.payload;
 
             if (error !== undefined) state.error = error;
