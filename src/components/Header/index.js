@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import * as ROUTES from './../../routers';
 
-import { Container, Avatar, Title } from './styles';
+import { Container, Avatar, Title, ArrowLeftIcon } from './styles';
 
 const Header = ({ match: { path }, history: { goBack } }) => {
     const renderHomeAvatarHeader = () => {
@@ -17,8 +17,8 @@ const Header = ({ match: { path }, history: { goBack } }) => {
     const renderPostDetailHeader = () => {
         return (
             <Container>
-                <Avatar size={30} />
-                <Title>Voltar</Title>
+                <ArrowLeftIcon onClick={goBack} />
+                <Title>Post</Title>
             </Container>
         );
     };

@@ -12,21 +12,13 @@ export const Wrapper = styled.div`
     height: 100%;
 `;
 
-export const AvatarColumn = styled.div`
-    display: flex;
-    min-width: 65px;
-    justify-content: center;
-    align-items: start;
-    padding-top: 15px;
-`;
-
 export const Content = styled.div`
     flex-basis: 0px;
     padding-bottom: 10px;
 `;
 
 export const ContentColumn = styled.div`
-    padding: 15px 10px;
+    padding: 10px 15px;
     height: 100%;
     width: 100%;
     display: flex;
@@ -35,31 +27,49 @@ export const ContentColumn = styled.div`
 `;
 
 export const ContentHeader = styled.div`
-    padding-bottom: 10px;
+    padding-bottom: 20px;
     font-weight: 400;
+    display: flex;
+    flex-direction: row;
+`;
 
-    > * {
-        margin-right: 10px;
+export const BoxUser = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin-left: 10px;
+    justify-content: center;
+
+    > strong {
+        font-size: 15px;
+        margin-bottom: 2px;
     }
 
     > span {
         color: var(--gray);
-        font-weight: 700;
+        font-weight: 500;
         font-size: 15px;
     }
+`;
+
+export const BoxTime = styled.div`
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     > time {
         color: var(--gray);
-        font-size: 15px;
     }
 `;
 
 export const PostContent = styled.div`
     font-weight: 400;
-    font-size: 15px;
+    font-size: 23px;
 
     > span {
-        overflow-wrap: anywhere;
+        overflow-wrap: break-word;
     }
 `;
 
@@ -67,8 +77,6 @@ export const StatusBar = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-
-    margin: 11px auto 0;
     width: 100%;
 
     > div {

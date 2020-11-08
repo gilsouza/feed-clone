@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { ArrowLeft } from './../../styles/Icons';
 
-export const Container = styled.div`
+export const Container = styled.header`
     padding: 0 15px;
     min-height: 53px;
     top: 0;
@@ -24,4 +25,16 @@ export const Avatar = styled.div`
     margin-right: 15px;
     width: ${({ size }) => `${size}px`};
     height: ${({ size }) => `${size}px`};
+`;
+
+const iconCSS = css`
+    width: 20px;
+    height: 20px;
+    margin-right: 35px;
+    margin-left: 5px;
+`;
+
+export const ArrowLeftIcon = styled(ArrowLeft)`
+    ${iconCSS}
+    fill: var(--twitter)
 `;

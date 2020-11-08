@@ -26,7 +26,7 @@ export const Header = styled.div`
     z-index: 2;
 `;
 
-export const Body = styled.div`
+export const Body = styled.main`
     min-height: 100vh;
     display: flex;
     flex-direction: column;

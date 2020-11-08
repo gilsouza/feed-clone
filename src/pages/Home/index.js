@@ -4,7 +4,7 @@ import * as ROUTES from './../../routers';
 
 import Header from './../../components/Header';
 import Feed from './../../components/Feed';
-import PostDetail from './../PostDetail';
+import PostDetail from './../../components/PostDetail';
 
 import { Container, Body } from './styles';
 

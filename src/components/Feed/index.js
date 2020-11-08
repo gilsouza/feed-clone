@@ -54,7 +54,10 @@ const Feed = ({ match: { path } }) => {
 
         return (
             <Link
-                to={`/user/${user}/post/${_hash}`}
+                to={{
+                    pathname: `/user/${user}/post/${_hash}`,
+                    state: { post: data },
+                }}
                 style={{
                     width,
                     textDecoration: 'none',
