@@ -27,10 +27,13 @@ const Post = (props) => {
             user: { name },
             posted_at,
             likes,
+            sequeces,
         },
     } = props;
     const date = Dayjs(posted_at).format(DATE_FORMAT);
     const at = userAt(name);
+
+    console.log(props);
 
     return (
         <Container>
@@ -52,6 +55,11 @@ const Post = (props) => {
                             <LikeIcon />
                             <span>{likes}</span>
                         </Likes>
+                        {sequeces && sequeces.length && (
+                            <Likes>
+                                <span>{'mostrar sequencia'}</span>
+                            </Likes>
+                        )}
                     </StatusBar>
                 </ContentColumn>
             </Wrapper>
