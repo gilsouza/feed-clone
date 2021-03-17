@@ -22,5 +22,8 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#15202b",
-  "background_color": "#15202b"
+  "background_color": "#15202b",
+  "permissions": [
+    "downloads"
+  ]
 }
