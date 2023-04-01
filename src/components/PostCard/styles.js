@@ -80,6 +80,7 @@ export const Likes = styled.div`
     display: flex;
     align-items: center;
     font-size: 14px;
+    margin-right: 14px;
 `;
 
 const iconCSS = css`

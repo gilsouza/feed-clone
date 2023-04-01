@@ -7,7 +7,7 @@ export const Container = styled.section`
 `;
 
 export const Wrapper = styled.article`
-    flex-direction: row;
+    flex-direction: column;
     display: flex;
     height: 100%;
 `;
@@ -101,4 +101,9 @@ const iconCSS = css`
 export const LikeIcon = styled(Favorite)`
     ${iconCSS}
     fill: var(--like);
+`;
+
+export const SequeceContainer = styled.div`
+    height: 200px;
+    padding: 25px;
 `;

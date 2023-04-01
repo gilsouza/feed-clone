@@ -38,6 +38,18 @@ const mockPaginableAPI = (page, limit, user) => {
         .then((data) => data.json())
         .then(mockFilterUserFriends(user))
         .then(mockSortPosts)
+        .then((postList) => {
+            return postList
+                .filter((item) => !item.post_sequence_id)
+                .map((item) => {
+                    const sequeces = postList.filter(
+                        (post) => post.post_sequence_id === item.id
+                    );
+                    console.log('sequeces', sequeces);
+                    item.sequeces = sequeces;
+                    return item;
+                });
+        })
         .then(mockPaginateResponse(page, limit));
 };
 
